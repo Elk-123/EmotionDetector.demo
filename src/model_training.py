@@ -8,7 +8,7 @@ import os
 
 # --- A. 数据生成器定义（重复自 data_preparation.py）---
 # 确保 DATA_DIR 路径与你的实际情况一致
-DATA_DIR = 'data/' 
+DATA_DIR = 'data/'
 IMAGE_SIZE = (48, 48)
 BATCH_SIZE = 64
 NUM_CLASSES = 7 # 7种情绪
