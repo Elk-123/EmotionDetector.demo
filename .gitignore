@@ -4,3 +4,6 @@ data/
 .vscode/
 __pycache__/
 haarcascade_frontalface_default.xml
+archive/
+yolov8n-face.pt
+models/resnet50_emotion_model.keras
