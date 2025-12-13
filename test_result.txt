@@ -1,0 +1,5 @@
+模型: models/resnet50_rafdb_model.keras
+测试集: archive/test
+样本数: 4165
+准确率: 88.40%
+损失: 0.3498

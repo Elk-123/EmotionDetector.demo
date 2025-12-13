@@ -1,9 +1,11 @@
-venv_ed/
-.venv/
+venv/
 data/
 .vscode/
 __pycache__/
 haarcascade_frontalface_default.xml
 archive/
-yolov8n-face.pt
 models/resnet50_emotion_model.keras
+yolov8n.pt
+models/resnet50_emotion_model (2).keras
+models/resnet50_rafdb_model.keras
+*.keras

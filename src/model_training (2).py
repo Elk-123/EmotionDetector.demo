@@ -8,9 +8,9 @@ from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLRO
 import os
 
 # ================= 配置区域 =================
-IMG_SIZE = 224       
+IMG_SIZE = 120
 NUM_CLASSES = 7
-BATCH_SIZE = 32      
+BATCH_SIZE = 16    
 EPOCHS = 50
 LEARNING_RATE = 1e-4
 
@@ -88,7 +88,7 @@ def create_resnet50_model(input_shape, num_classes):
         input_tensor=input_tensor 
     )
 
-    base_model.trainable = False 
+    base_model.trainable = True
     
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
@@ -123,13 +123,17 @@ callbacks = [
 
 # 5. 开始训练 (Train vs Val)
 print("\nINFO: Starting training...")
+
+# 直接使用原来的fit，但确保数据打乱
+train_generator.reset()
+
+# 使用原来的fit调用，它内部应该处理数据打乱
 history = model.fit(
     train_generator,
     epochs=EPOCHS,
-    validation_data=validation_generator, # 使用 Val 集进行过程监控
+    validation_data=validation_generator,
     callbacks=callbacks
 )
-
 # 6. 最终测试 (Evaluation on Test Set)
 print("\nINFO: Training completed. Evaluating on Test Set...")
 # 加载刚才保存的最好模型（因为 EarlyStopping 可能会回滚，或者 best model 是几轮之前的）
